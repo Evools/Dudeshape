@@ -1,0 +1,134 @@
+.header{
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  z-index: 999999;
+  .logo{
+    color: $dark-green;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .nav-collapse{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    .nav{
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-left: auto;
+      margin-right: 1.25rem;
+      margin-right: auto;
+      &__link{
+        color: $dark-text;
+        position: relative;
+        transition: .6s all;
+        &::before{
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -0.3125rem;
+          width: 0;
+          margin: 0 auto;
+          height: 2px;
+          background: $dark-green;
+          border-radius: 1.25rem;
+          transition: .6s all;
+        }
+        &:hover{
+          color: $dark-green;
+        }
+        &:hover::before{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.hamburger{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .3125rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: .6s all;
+  span{
+    display: inline-block;
+    width: 100%;
+    height: 2px;
+    background: $dark-green;
+    transition: .6s all;
+    &:nth-child(1){
+      width: .875rem;
+      transition: .6s all;
+    }
+    &:nth-child(3){
+      width: .875rem;
+      margin-left: auto;
+      transition: .6s all;
+    }
+  }
+}
+
+.hamburger{
+  display: none;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 57.5rem) {
+  .hamburger{
+    display: flex;
+  }
+  .hamburger.is-active{
+    span{
+      transform: rotate(50deg);
+      &:nth-child(1){
+        width: 0;
+      }
+      &:nth-child(3){
+        transform: rotate(130deg) translateY(5px) translateX(-5px);
+        width: 100%;
+      }
+    }
+  }
+  .header{
+    position: sticky;
+    top: 0;
+    background: white;
+    border: solid .0625rem #ccc;
+  }
+  .nav-collapse{
+    z-index: 9999999;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    top: 4.5rem;
+    flex-direction: column;
+    background: $dark-green;
+    max-height: 0;
+    overflow: hidden;
+    width: 100%;
+    transition: .6s all;
+    .svg-icons{
+      margin-top: 20px;
+      fill: white;
+    }
+    .nav{
+      flex-direction: column;
+      margin: 0 auto !important;
+      &__link{
+        color: white !important;
+      }
+    }
+  }
+  .nav-collapse.is-active{
+    max-height: 37.5rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
